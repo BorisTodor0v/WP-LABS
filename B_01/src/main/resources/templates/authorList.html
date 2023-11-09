@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Add new Author to Book</title>
+    <style type = "text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+        table {
+            width:100%;
+        }
+        table, td, th {
+            border: 1px solid black;
+            padding:3px 2px;
+        }
+        section {
+            float: left;
+            margin: 0 1.5%;
+            width: 63%;
+        }
+        aside {
+            float: right;
+            margin: 0 1.5%;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Select the Author to add to the Book </h1>
+</header>
+<section>
+    <h2>Select author:</h2>
+    <form th:method="POST" th:action="@{/bookDetails}">
+        <div th:each="author : ${authors}"></div>
+            <input type="radio" name="authorId" th:value="${author.getId()}">
+        <span th:text="${author.getName()} + ' ' + ${author.getSurname}"></span>
+        </br></form>
+
+    <input type='submit' value='Add author'>
+</section>
+<aside>
+    <table>
+        <tr>
+            <!-- change to show selected book isbn -->
+            <td><b>Book Isbn</b></td>
+            <td th:text="${bookISBN}">
+        </tr>
+    </table>
+</aside>
+</body>
+</html>

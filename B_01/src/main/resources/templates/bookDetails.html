@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- dynamically display data -->
+<header>
+   <h1 th:text="${book.getTitle()}"></h1>
+</header>
+<section>
+    <h2 th:text="${book.getGenre()}"></h2>
+    <h2 th:text="${book.getYear()}"></h2>
+    <h2>Authors:</h2>
+    <ul th:each="author : ${book.authors}">
+        <li th:text="${author.getName()} + ' ' + ${author.getSurname()}"></li>
+    </ul>
+</section>
+
+</body>
