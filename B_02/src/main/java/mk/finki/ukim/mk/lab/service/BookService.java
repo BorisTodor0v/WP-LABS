@@ -12,9 +12,10 @@ public interface BookService{
     Author addAuthorToBook(Long authorId, String isbn);
     Book findBookByIsbn(String isbn);
     Book findBookById(Long id);
+
+    List<Book> findBooksByStore(BookStore bookStore)
     void deleteById(Long id);
 
     void update(Long bookId, String title, String isbn, String genre, int year, BookStore bookStore);
-
     void addNewBook(Book book);
 }

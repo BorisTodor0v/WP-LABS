@@ -1,7 +1,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Books Homepage - Welcome to My Book Store</title>
+    <title th:text="'Books in ' + ${bookStoreName}"></title>
     <style type="text/css">
         body {
             width: 800px;
@@ -11,10 +11,10 @@
 </head>
 <body>
 <header>
-    <h1>Welcome to My Book Store</h1>
+    <h1 th:text="'Welcome to' + ${bookStoreName}"></h1>
 </header>
 <main>
-    <h2>Choose book:</h2>
+    <h2>Available books:</h2>
     <table>
         <thead>
         <tr>
@@ -30,18 +30,11 @@
             <td th:text="${book.genre}"></td>
             <td th:text="${book.year}"></td>
             <td>
-                <a th:href="@{/books/details/{id}(id=${book.id})}">Details</a> <!-- Dopolnitelno dodadeno -->
-                <a th:href="@{/author/{id}(id=${book.id})}">Add author</a> <!-- Lab 01 Baranje -->
-                <a th:href="@{/books/edit-form/{id}(id=${book.id})}">Edit</a>
-                <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
+                <a th:href="@{/books/details/{id}(id=${book.id})}">Details</a>
             </td>
         </tr>
         </tbody>
     </table>
-    <form method="get" th:action="@{/books/add-form}">
-        <button type="submit">Add a New Book</button>
-    </form>
-    <button type="submit" th:action="@{/bookStores}">View all book stores</button>
 </main>
 </body>
 </html>

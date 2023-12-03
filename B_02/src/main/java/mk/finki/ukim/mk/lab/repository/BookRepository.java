@@ -60,6 +60,10 @@ public class BookRepository {
         return books.stream().filter(b->b.getId().equals(id)).collect(Collectors.toList()).get(0);
     }
 
+    public List<Book> findByBookStore(BookStore bookStore){
+        return books.stream().filter(b->b.getBookStore().equals(bookStore)).collect(Collectors.toList());
+    }
+
     public Author addAuthorToBook(Author author, Book book) {
         book.getAuthors().add(author);
         return author;

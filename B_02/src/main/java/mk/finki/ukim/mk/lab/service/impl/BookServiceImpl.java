@@ -48,6 +48,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    List<Book> findBooksByStore(BookStore bookStore){
+        return bookRepository.findByBookStore(bookStore);
+    }
+
+    @Override
     public void deleteById(Long id) {
         bookRepository.deleteById(id);
     }
