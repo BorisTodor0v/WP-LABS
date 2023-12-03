@@ -48,7 +48,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    List<Book> findBooksByStore(BookStore bookStore){
+    public List<Book> findBooksByStore(BookStore bookStore){
         return bookRepository.findByBookStore(bookStore);
     }
 

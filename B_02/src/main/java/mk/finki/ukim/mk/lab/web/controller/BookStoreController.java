@@ -42,7 +42,7 @@ public class BookStoreController {
         List<Book> books = bookService.findBooksByStore(bookStore);
         model.addAttribute("bookStoreName", bookStore.getName());
         model.addAttribute("books", books);
-        return "bookStoreDetails"
+        return "bookStoreDetails";
     }
 
 }

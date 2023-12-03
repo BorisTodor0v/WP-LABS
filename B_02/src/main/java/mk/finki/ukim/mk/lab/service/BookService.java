@@ -13,7 +13,7 @@ public interface BookService{
     Book findBookByIsbn(String isbn);
     Book findBookById(Long id);
 
-    List<Book> findBooksByStore(BookStore bookStore)
+    List<Book> findBooksByStore(BookStore bookStore);
     void deleteById(Long id);
 
     void update(Long bookId, String title, String isbn, String genre, int year, BookStore bookStore);
