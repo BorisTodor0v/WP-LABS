@@ -32,7 +32,7 @@
             <td>
                 <a th:href="@{/books/details/{id}(id=${book.id})}">Details</a> <!-- Dopolnitelno dodadeno -->
                 <a th:href="@{/author/{id}(id=${book.id})}">Add author</a> <!-- Lab 01 Baranje -->
-                <a th:href="@{/books/edit-form/{id}(id=${book})}">Edit</a>
+                <a th:href="@{/books/edit-form/{id}(id=${book.id})}">Edit</a>
                 <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
             </td>
         </tr>
@@ -40,6 +40,12 @@
     </table>
     <form method="get" th:action="@{/books/add-form}">
         <button type="submit">Add a New Book</button>
+    </form>
+    <form method="get" th:action="@{/author/add}">
+        <button type="submit">Add a New Author</button>
+    </form>
+    <form method="get" th:action="@{/bookStores/add}">
+        <button type="submit">Add a New Book Store</button>
     </form>
     <form method="get" th:action="@{/bookStores}">
         <button type="submit">View all book stores</button>

@@ -1,0 +1,56 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${b.getTitle()}"></title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 th:text="${b.getTitle()}"></h1>
+
+</header>
+    <section>
+        <h3>Genre</h3>
+        <p th:text="${b.getGenre()}"><p>
+
+        <h3>Year</h3>
+        <p th:text="${b.getYear()}"><p>
+
+        <h3>In book store:</h3>
+        <p th:text="${b.getBookStore().getName()}+', at '+${b.getBookStore().getAddress()}+', '+${b.getBookStore().getCity()}"></p>
+
+        <h3>Authors:</h3>
+        <ul th:each="author : ${Authors}">
+            <li th:text="${author.getFullName()}"></li>
+        </ul>
+    </section>
+    <form method="get" th:action="@{/books/details/{id}/review(id=${b.getId()})}">
+        <button type="submit">Add a review for this book</button>
+    </form>
+    <form method="post" th:action="@{/books/details/{id}/review/filtered(id=${b.getId()})}"> <!-- Filtered reviews -->
+        <p>Show reviews posted between two dates</p>
+
+        <label for="from">From:</label>
+        <input type="datetime-local" id="from" name="from" required></br>
+
+        <label for="to">To:</label>
+        <input type="datetime-local" id="to" name="to" required>
+
+        <button type="submit">Filter reviews</button>
+    </form>
+    <section>
+        <h3>Reviews:</h3>
+        <ul th:each="review : ${reviews}" style="list-style-type: none">
+            <!-- <li th:text="${review.toString()}"></li>  So racno formatiranje -->
+            <li th:text="${#temporals.format(review.getTimeStamp(), 'dd-MM-yyyy HH:mm:ss')} + ' | ' + ${review.getScore()} + ' | ' + ${review.getDescription()}"></li>
+        </ul>
+    </section>
+</body>
+</html>

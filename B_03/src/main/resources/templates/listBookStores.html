@@ -1,0 +1,43 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Book Stores - Welcome to My Book Store</title>
+  <style type="text/css">
+    body {
+      width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Viewing all book stores</h1>
+</header>
+<main>
+  <h2>Choose book:</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="bookStore : ${bookStores}">
+        <td th:text="${bookStore.name}"></td>
+        <td th:text="${bookStore.address}"></td>
+        <td th:text="${bookStore.city}"></td>
+        <td>
+          <a th:href="@{/bookStores/details/{id}(id=${bookStore.id})}">Details</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <form method="get" th:action="@{/books}">
+    <button type="submit">Go back to all books</button>
+  </form>
+</main>
+</body>
+</html>

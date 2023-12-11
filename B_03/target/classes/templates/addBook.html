@@ -1,0 +1,63 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Add New Book - My Book Store</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Add New Book</h1>
+</header>
+<main>
+    <form method="post" th:action="@{/books/add-form}" onsubmit="return validateForm()">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br/>
+
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" required><br/>
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" required><br/>
+
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" required><br/>
+
+        <label for="bookStoreId">Book Store:</label>
+        <select id="bookStoreId" name="bookStoreId">
+            <option th:each="store : ${bookStores}" th:value="${store.id}" th:text="${store.name}"></option>
+        </select><br/>
+
+        <label>Authors:</label><br/>
+        <div th:each="author : ${authors}">
+            <input type="checkbox" id="authorIds" name="authorIds" th:value="${author.id}">
+            <label th:for="${'author_' + author.id}" th:text="${author.getFullName().toString()}"></label><br/>
+        </div>
+
+        <input type="submit" value="Add Book">
+    </form>
+
+    <script th:inline="javascript">
+        function validateForm() {
+            var checkboxes = document.getElementsByName('authorIds');
+            var checked = false;
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    checked = true;
+                    break;
+                }
+            }
+            if (!checked) {
+                alert('Please select at least one author.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</main>
+</body>
+</html>

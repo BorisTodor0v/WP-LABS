@@ -1,0 +1,31 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${book.getTitle()} + ' - Review'"></title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 th:text="'Add a review for ' + ${book.getTitle()}"></h1>
+</header>
+<main>
+    <form method="post">
+        <label for="score"><!--and seven years ago-->Score:</label>
+        <input type="number" min="0" max="10" id="score" name="score" required></br>
+
+        <label for="description">Descripton:</label>
+        <input type="text" id="description" name="description"></br>
+
+        <label for="timeStamp">Time stamp:</label>
+        <input type="datetime-local" id="timeStamp" name="timeStamp"></br>
+
+        <input type="submit" value="Add Review">
+    </form>
+</main>
+</body>
+</html>
